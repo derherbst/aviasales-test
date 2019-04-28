@@ -1,3 +1,3 @@
-import CurrencyFilter from './currency-filter';
+import Filter from './currency-filter';
 
-export default CurrencyFilter;
+export default Filter;

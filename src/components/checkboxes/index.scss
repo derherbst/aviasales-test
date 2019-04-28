@@ -1,0 +1,95 @@
+.checkboxes__item {
+	position: relative;
+	&:hover {
+		background: #F1FCFF;
+	}
+}
+
+.checkboxes__uncheck-other {
+	font-size: .7rem;
+	text-transform: uppercase;
+	line-height: 35px;
+	color: #2196F3;
+	cursor: pointer;
+	padding: 0 15px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	opacity: 0;
+	&:hover {
+		color: #ff9d1b;
+	}
+	.checkboxes__item:hover & {
+		opacity: 1;
+
+	}
+}
+
+.checkboxes__label {
+	display: flex;
+	align-items: center;
+	position: relative;
+	padding: 0 15px;
+	cursor: pointer;
+	font-size: .8rem;
+	line-height: 35px;
+	user-select: none;
+	color: #4A4A4A;
+}
+
+/* Hide the browser's default checkbox */
+.checkboxes__input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
+
+/* Create a custom checkbox */
+.checkboxes__checkmark {
+	display: block;
+	position: relative;
+	height: 19px;
+	width: 19px;
+	border-radius: 3px;
+	margin-right: 10px;
+	background: #FFFFFF;
+	border: 1px solid #D2D5D6;
+	&:after {
+		content: "";
+		position: absolute;
+		display: none;
+	}
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkboxes__input {
+	&:checked ~ .checkboxes__checkmark {
+		background: #F2FCFF;
+		border: 1px solid #2196F3;
+	}
+}
+
+/* Show the checkmark when checked */
+.checkboxes__input {
+	&:checked ~ .checkboxes__checkmark:after {
+		display: block;
+	}
+}
+
+/* Style the checkmark/indicator */
+.checkboxes__label .checkboxes__checkmark {
+	&:after {
+		left: 7px;
+		top: 3px;
+		width: 3px;
+		height: 7px;
+		border: solid #2196F3;
+		border-width: 0 3px 3px 0;
+		-webkit-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		transform: rotate(45deg);
+	}
+}

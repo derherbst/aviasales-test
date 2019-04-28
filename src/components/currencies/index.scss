@@ -1,0 +1,37 @@
+.currencies {
+	padding: 0 15px;
+}
+
+.currencies__tabs {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+}
+
+.currencies__tab {
+	flex-grow: 1;
+	flex-shrink: 0;
+	height: 40px;
+	background: #fff;
+	border: 1px solid #D2D5D6;
+	box-sizing: border-box;
+	font-size: .75rem;
+	color: #2196F3;
+	outline: none;
+	cursor: pointer;
+	&:first-child {
+		border-radius: 5px 0 0 5px;
+	}
+	&:last-child {
+		border-radius: 0 5px 5px 0;
+	}
+	&:hover {
+		background: #F2FCFF;
+		border: 1px solid #64B5F5;
+	}
+	&.active {
+		color: #fff;
+		background: #64B5F5;
+		border: 1px solid #64B5F5;
+	}
+}

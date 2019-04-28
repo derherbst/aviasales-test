@@ -1,16 +1,17 @@
 import React from 'react';
-import { withNaming } from '@bem-react/classname';
-import { classnames } from '@bem-react/classnames';
+import Currencies from '../currencies';
 
-const cn = withNaming({ n: '', e: '__', m: '_' });
-const filter = cn('filter');
+import './index.scss';
 
-const CurrencyFilter = ({className}) => {
+const Filter = ({className}) => {
 	return(
-		<div className={classnames(className, filter())}>
-
+		<div className={`${className} filter`}>
+			<div className="filter__header">Валюта</div>
+			<div className="filter__content">
+				<Currencies />
+			</div>
 		</div>
 	)
 };
 
-export default CurrencyFilter;
+export default Filter;

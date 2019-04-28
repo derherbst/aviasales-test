@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 
+import './index.scss';
+
 const filterButtons = [
 	{name: 'RUB', label: 'RUB'},
 	{name: 'USD', label: 'USD'},
 	{name: 'EUR', label: 'EUR'}
 ];
 
-class StopsSorting extends Component {
+class Currencies extends Component {
 
 	render() {
 
@@ -15,14 +17,14 @@ class StopsSorting extends Component {
 				<button key={name}
 				        type="button"
 				        onClick={() => console.log(123)}
-				        className={123}>{label}
+				        className='currencies__tab'>{label}
 				</button>
 			)
 		});
 
 		return (
-			<div className='sorting'>
-				<div className='sorting__tabs'>
+			<div className='currencies'>
+				<div className='currencies__tabs'>
 					{ tabs }
 				</div>
 			</div>
@@ -31,4 +33,4 @@ class StopsSorting extends Component {
 
 }
 
-export default StopsSorting;
+export default Currencies;
