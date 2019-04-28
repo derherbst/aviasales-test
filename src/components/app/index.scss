@@ -14,4 +14,17 @@
 	width: 818px;
 	margin: 0 auto;
 	padding: 0 10px;
+	padding-top: 60px;
+}
+
+.app__sidePanel {
+	width: 232px;
+	margin-right: 20px;
+	background: #FFFFFF;
+	box-shadow: 0px 1px 4px rgba(91, 137, 164, 0.25);
+	border-radius: 5px;
+}
+
+.app__content {
+	width: 566px;
 }

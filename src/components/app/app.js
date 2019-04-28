@@ -1,31 +1,31 @@
 import React, { Component } from 'react';
-import { withNaming } from '@bem-react/classname';
-import { classnames } from '@bem-react/classnames';
 
 import Filters from '../filters';
+import TicketsList from '../tickets-list';
+import TicketsService from '../../services/ticketsService';
 
 import './index.scss';
 
 import SvgPlane from '../../assets/icons/Plane';
 
-const cn = withNaming(
-	{
-	n: ' ',
-	e: '__',
-	m: '_',
-	v: '_'
-});
-const app = cn('app');
+const ticketsService = new TicketsService();
 
 export default class App extends Component {
+
+	componentDidMount() {
+		console.log(ticketsService.getTickets())
+	}
+
 	render() {
 		return(
-			<div className={app()}>
-				<div className={app('inner')}>
-					<div className={app('sidePanel')}>
+			<div className='app'>
+				<div className='app__inner'>
+					<div className='app__sidePanel'>
 						<Filters />
 					</div>
-					<div className={classnames('Block', app('content'))}></div>
+					<div className='app__content'>
+						<TicketsList />
+					</div>
 				</div>
 			</div>
 		)

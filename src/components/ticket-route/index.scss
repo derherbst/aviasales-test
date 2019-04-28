@@ -1,0 +1,55 @@
+.ticket-route {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+.ticket-route__info {
+	color: #4A4A4A;
+	&.departure {
+		text-align: left;
+	}
+	&.arrival {
+		text-align: right;
+	}
+}
+
+.ticket-route__time {
+	font-size: 2rem;
+	line-height: .8;
+	margin-bottom: 5px;
+}
+
+.ticket-route__origin {
+	font-size: .8rem;
+	line-height: 1.2;
+	font-weight: 600;
+}
+
+.ticket-route__date {
+	font-size: .8rem;
+	color: #8B9497;
+}
+
+.ticket-route__transfers {
+	font-size: .6rem;
+	font-weight: 600;
+	color: #8B9497;
+	text-transform: uppercase;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #8B9497;
+	position: relative;
+	&::after {
+		content: '';
+		display: block;
+		position: absolute;
+		right: -13px;
+		bottom: -7px;
+		background: url("../../assets/icons/plane-mini.svg") no-repeat center center;
+		width: 13px;
+		height: 14px;
+	}
+}

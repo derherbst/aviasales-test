@@ -1,0 +1,30 @@
+.ticket {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: stretch;
+	min-height: 160px;
+	background: #FFFFFF;
+	box-shadow: 0 1px 4px rgba(91, 137, 164, 0.25);
+	border-radius: 5px;
+}
+
+.ticket__aside {
+	display: flex;
+	flex-direction: column;
+	width: 200px;
+	border-right: 1px solid #ECEFF1;
+	padding: 10px 20px 25px;
+	box-sizing: border-box;
+}
+
+.ticket__logo {
+	height: 20px;
+	background: url("../../assets/logo/ural_logo.png") center center no-repeat;
+}
+
+.ticket__content {
+	display: flex;
+	flex-direction: column;
+	padding: 25px;
+	flex-grow: 1;
+}
