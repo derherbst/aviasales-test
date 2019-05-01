@@ -29,5 +29,7 @@ const fetchTickets = (ticketsService, dispatch) => () => { // не хотим ч
 };
 
 export {
-	fetchTickets
+	ticketsLoaded,
+	ticketsRequested,
+	ticketsError
 }
