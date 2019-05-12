@@ -18,6 +18,13 @@ const ticketsError = (error) => {
 	}
 };
 
+const filterByCurrency = (currency) => {
+	return {
+		type: 'FILTER_BY_CURRENCY',
+		payload: currency
+	}
+};
+
 const fetchTickets = (ticketsService, dispatch) => () => { // не хотим чтобы компонент зависел от параметров поэтому передаем только в первую функцию
 	dispatch(ticketsRequested());
 	ticketsService.getTickets()
@@ -31,5 +38,6 @@ const fetchTickets = (ticketsService, dispatch) => () => { // не хотим ч
 export {
 	ticketsLoaded,
 	ticketsRequested,
-	ticketsError
+	ticketsError,
+	filterByCurrency
 }

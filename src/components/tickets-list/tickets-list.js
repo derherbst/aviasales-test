@@ -6,18 +6,18 @@ import withTicketsService from '../hoc/with-tickets-service';
 import { ticketsLoaded } from '../../actions';
 import { compose } from "../../utils";
 
+import './index.scss';
+
 class TicketsList extends Component {
 
 	componentDidMount() {
 		const { ticketsService } = this.props;
 		const data = ticketsService.getTickets().then((data) => this.props.ticketsLoaded(data));
-		console.log(data);
+		// console.log(data);
 	}
 
 	render() {
-		const { tickets } = this.props;
-
-		console.log(tickets);
+		const { tickets, currency } = this.props;
 
 		return (
 			<div className='tickets-list'>
@@ -29,7 +29,7 @@ class TicketsList extends Component {
 						.map((ticket) => {
 							return (
 								<div key={tickets.indexOf(ticket)} className='tickets-list__item'>
-									<TicketItem ticket={ticket}/>
+									<TicketItem ticket={ticket} currency={currency}/>
 								</div>
 							)
 						})
@@ -37,14 +37,21 @@ class TicketsList extends Component {
 			</div>
 		)
 	}
+}
+
+const mapStateToProps = (state) => {
+	return {
+		tickets: state.tickets,
+		currency: state.currency
+	}
 };
 
-const mapStateToProps = ({ tickets }) => {
-	return { tickets }
-};
-
-const mapDispatchToProps = {
-	ticketsLoaded
+const mapDispatchToProps = (dispatch) => {
+	return {
+		ticketsLoaded: (newTickets) => {
+			dispatch(ticketsLoaded(newTickets))
+		}
+	}
 };
 
 export default compose(withTicketsService(), connect(mapStateToProps, mapDispatchToProps))(TicketsList);

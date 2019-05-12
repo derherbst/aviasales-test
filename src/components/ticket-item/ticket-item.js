@@ -4,7 +4,7 @@ import Button from "../UI/button";
 import './index.scss';
 import TicketRoute from "../ticket-route";
 
-const TicketItem = ({ ticket }) => {
+const TicketItem = ({ ticket, currency }) => {
 
 	const { price } = ticket;
 
@@ -13,7 +13,7 @@ const TicketItem = ({ ticket }) => {
 			<div className="ticket__aside">
 				<div className="ticket__logo"></div>
 				<div className="ticket__buy">
-					<Button price={price} />
+					<Button price={price} currency={currency}/>
 				</div>
 			</div>
 			<div className="ticket__content">

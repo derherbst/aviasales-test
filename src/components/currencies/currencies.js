@@ -13,11 +13,13 @@ class Currencies extends Component {
 	render() {
 
 		const tabs = filterButtons.map(({name, label}) => {
+			const isActive = this.props.currency === name;
+			const clazz = isActive ? 'active' : '';
 			return (
 				<button key={name}
 				        type="button"
-				        onClick={() => console.log(123)}
-				        className='currencies__tab'>{label}
+				        onClick={() => this.props.onCurrencyChange(name)}
+				        className={`currencies__tab ${clazz}`}>{label}
 				</button>
 			)
 		});
