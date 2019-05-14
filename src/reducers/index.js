@@ -3,28 +3,35 @@ let initialState = {
 	tickets: [],
 	loading: true,
 	error: null,
-	currency: 'RUB'
+	currency: 'RUB',
+	stopsAmount: null
 };
 
-const updateTicketsList = (state, curr) => {
+const convertTicketsPrice = (state, curr) => {
 
 	const { initialTickets } = state;
 
 	const newCurrency = initialTickets.map((ticket) => {
-		if (curr === 'RUB') {
-			return ticket
-		} else if (curr === 'EUR') {
-			return {
-				...ticket,
-				price: (ticket.price/73).toFixed(0)
-			}
-		} else if (curr === 'USD') {
-			return {
-				...ticket,
-				price: (ticket.price/65).toFixed(0)
-			}
+
+		switch (curr) {
+			case 'EUR':
+				return {
+					...ticket,
+					price: (ticket.price/73).toFixed(0)
+				};
+			case 'USD':
+				return {
+					...ticket,
+					price: (ticket.price/65).toFixed(0)
+				};
+			default:
+				return ticket
 		}
+
 	});
+
+	console.log(initialTickets);
+	console.log(state);
 
 	return {
 		...state,
@@ -42,7 +49,9 @@ const reducer = (state = initialState, action) => {
 				initialTickets: [],
 				loading: true,
 				error: null,
-				currency: 'RUB'
+				currency: 'RUB',
+				stopsAmount: null,
+				maxStops: null
 			};
 		case 'FETCH_TICKETS_SUCCESS':
 			return {
@@ -50,7 +59,9 @@ const reducer = (state = initialState, action) => {
 				initialTickets: action.payload,
 				loading: false,
 				error: null,
-				currency: 'RUB'
+				currency: 'RUB',
+				stopsAmount: null,
+				maxStops: Math.max.apply(Math, action.payload.map(function(o) { return o.stops; }))
 			};
 		case 'FETCH_TICKETS_FAILURE':
 			return {
@@ -58,10 +69,12 @@ const reducer = (state = initialState, action) => {
 				initialTickets: [],
 				loading: false,
 				error: action.payload,
-				currency: 'RUB'
+				currency: 'RUB',
+				stopsAmount: null,
+				maxStops: null
 			};
 		case 'FILTER_BY_CURRENCY':
-			return updateTicketsList(state, action.payload);
+			return convertTicketsPrice(state, action.payload);
 		default:
 			return state
 	}

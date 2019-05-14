@@ -25,6 +25,13 @@ const filterByCurrency = (currency) => {
 	}
 };
 
+const filterByStops = (stops) => {
+	return {
+		type: 'FILTER_BY_STOPS',
+		payload: stops
+	}
+};
+
 const fetchTickets = (ticketsService, dispatch) => () => { // не хотим чтобы компонент зависел от параметров поэтому передаем только в первую функцию
 	dispatch(ticketsRequested());
 	ticketsService.getTickets()
@@ -39,5 +46,6 @@ export {
 	ticketsLoaded,
 	ticketsRequested,
 	ticketsError,
-	filterByCurrency
+	filterByCurrency,
+	filterByStops
 }

@@ -1,53 +1,44 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import './index.scss';
 
-const Checkboxes = () => {
-	return (
-		<div className='checkboxes'>
-			<div className='checkboxes__item'>
-				<label className='checkboxes__label'>
-					<input className='checkboxes__input' type='checkbox' />
-					<span className='checkboxes__checkmark'></span>
-					Все пересадки
-				</label>
-			</div>
-			<div className="checkboxes__list">
-				<div className='checkboxes__item'>
+class Checkboxes extends Component {
+
+	createCheckboxes = (maxStops) => {
+		let checkboxes = [];
+		for (let i = 0; i <= maxStops; i++) {
+			checkboxes.push(
+				<div key={i} className='checkboxes__item'>
 					<label className='checkboxes__label'>
 						<input className='checkboxes__input' type='checkbox' />
 						<span className='checkboxes__checkmark'></span>
-						Без пересадок
+							{i === 0 ? 'Без пересадок' : `${i} пересадка`}
 					</label>
-					<div className="checkboxes__uncheck-other">Только</div>
 				</div>
+			)
+		}
+		return checkboxes
+	};
+
+	render() {
+		return (
+			<div className='checkboxes'>
 				<div className='checkboxes__item'>
 					<label className='checkboxes__label'>
 						<input className='checkboxes__input' type='checkbox' />
 						<span className='checkboxes__checkmark'></span>
-						1 пересадка
+						Все пересадки
 					</label>
-					<div className="checkboxes__uncheck-other">Только</div>
 				</div>
-				<div className='checkboxes__item'>
-					<label className='checkboxes__label'>
-						<input className='checkboxes__input' type='checkbox' />
-						<span className='checkboxes__checkmark'></span>
-						2 пересадки
-					</label>
-					<div className="checkboxes__uncheck-other">Только</div>
-				</div>
-				<div className='checkboxes__item'>
-					<label className='checkboxes__label'>
-						<input className='checkboxes__input' type='checkbox' />
-						<span className='checkboxes__checkmark'></span>
-						3 пересадки
-					</label>
-					<div className="checkboxes__uncheck-other">Только</div>
+				<div className="checkboxes__list">
+					{
+						this.createCheckboxes(this.props.maxStops)
+					}
 				</div>
 			</div>
-		</div>
-	)
+		)
+	}
+
 };
 
 export default Checkboxes
