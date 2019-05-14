@@ -25,10 +25,13 @@ const filterByCurrency = (currency) => {
 	}
 };
 
-const filterByStops = (stops) => {
+const filterByStops = (stops, el) => {
 	return {
 		type: 'FILTER_BY_STOPS',
-		payload: stops
+		payload: {
+			stops,
+			el
+		}
 	}
 };
 

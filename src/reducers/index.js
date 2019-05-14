@@ -75,6 +75,11 @@ const reducer = (state = initialState, action) => {
 			};
 		case 'FILTER_BY_CURRENCY':
 			return convertTicketsPrice(state, action.payload);
+		case 'FILTER_BY_STOPS':
+			return {
+				...state,
+				stopsAmount: action.payload,
+			};
 		default:
 			return state
 	}
