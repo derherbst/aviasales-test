@@ -4,7 +4,7 @@ let initialState = {
 	loading: true,
 	error: null,
 	currency: 'RUB',
-	stopsAmount: null
+	stopsAmount: []
 };
 
 const convertTicketsPrice = (state, curr) => {
@@ -60,7 +60,7 @@ const reducer = (state = initialState, action) => {
 				loading: false,
 				error: null,
 				currency: 'RUB',
-				stopsAmount: null,
+				stopsAmount: [],
 				maxStops: Math.max.apply(Math, action.payload.map(function(o) { return o.stops; }))
 			};
 		case 'FETCH_TICKETS_FAILURE':
@@ -76,13 +76,22 @@ const reducer = (state = initialState, action) => {
 		case 'FILTER_BY_CURRENCY':
 			return convertTicketsPrice(state, action.payload);
 		case 'FILTER_BY_STOPS':
+
+			console.log(state);
+			console.log(action.payload);
+
+			console.log(state.stopsAmount, 'haha');
+
+			// return filterTicketsByStops(state, action.payload);
 			return {
 				...state,
-				stopsAmount: action.payload,
+				stopsAmount: action.payload
 			};
 		default:
 			return state
 	}
 };
+
+// при нажатии на чекбокс надо в стейт записывать
 
 export default reducer;

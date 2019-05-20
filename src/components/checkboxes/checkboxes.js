@@ -10,7 +10,7 @@ class Checkboxes extends Component {
 			checkboxes.push(
 				<div key={i} className='checkboxes__item'>
 					<label className='checkboxes__label'>
-						<input className='checkboxes__input' type='checkbox' onChange={() => this.props.onStopsChange(i, event.target)}/>
+						<input className='checkboxes__input' type='checkbox' onChange={(event) => this.props.onStopsChange(i, event.target)}/>
 						<span className='checkboxes__checkmark'></span>
 							{i === 0 ? 'Без пересадок' : `${i} пересадка`}
 					</label>

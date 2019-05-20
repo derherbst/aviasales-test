@@ -16,20 +16,33 @@ const StopsFilter = ({className, stopsAmount, maxStops, onStopsChange}) => {
 	)
 };
 
+const filter2TicketsByStops = (tickets, filter) => {
+	switch (true) {
+		case (filter !== null):
+			tickets.filter(ticket => {
+				console.log(ticket.stops);
+				return ticket.stops === filter
+			});
+			break;
+		default:
+			return tickets
+	}
+};
+
+
 // похоже можно сделать через реселект
 
 const mapStateToProps = (state) => {
 	return {
-		tickets: state.tickets,
-		stopsAmount: state.stopsAmount,
-		maxStops: state.maxStops
+		maxStops: state.maxStops,
+		// tickets: filter2TicketsByStops(state.tickets, state.stopsAmount)
 	}
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		onStopsChange: (stops, el) => {
-			dispatch(filterByStops(stops, el))
+		onStopsChange: (stops) => {
+			dispatch(filterByStops(stops))
 		}
 	}
 };

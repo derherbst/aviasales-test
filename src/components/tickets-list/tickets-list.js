@@ -39,9 +39,23 @@ class TicketsList extends Component {
 	}
 }
 
+const filter2TicketsByStops = (tickets, filter) => {
+	console.log(tickets);
+	switch (true) {
+		case (filter.length !== 0):
+			const filtered = tickets.filter(ticket => {
+				console.log(ticket.stops);
+				return ticket.stops === filter
+			});
+			return filtered;
+		default:
+			return tickets
+	}
+};
+
 const mapStateToProps = (state) => {
 	return {
-		tickets: state.tickets,
+		tickets: filter2TicketsByStops(state.tickets, state.stopsAmount),
 		currency: state.currency
 	}
 };
